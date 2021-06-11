@@ -21,8 +21,8 @@ getMetricData () {
 
 	#echo " AN is $AGENT_NAME --- ME is $METRIC_EXPR"
 
-	METRIC_DATA=`curl -s -k -X POST 'https://apmgw.dxi-na1.saas.broadcom.com/1026/apm/appmap/private/apmData/query' \
-	-H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJzdWIiOiJTUklLQU5ULk5PT1JBTklAQlJPQURDT00uQ09NIiwiZHluZXhwIjp0cnVlLCJ0aWQiOjEwMjYsImp0aSI6ImFhZTc0ZDYyLTExMzMtNGI2Mi1hNWQ1LTlmYzdkZTAzMTIwYSJ9.1k0kCEQF1U55RGfZtc37EgIdTC8l8tIFFvScfjyzwDTohUOBqbe209iq43Zm1TeY93DOrlSS98gD0VrhARX84g' \
+	METRIC_DATA=`curl -s -k -X POST 'https://apmgw.dxi-na1.saas.broadcom.com/126/apm/appmap/private/apmData/query' \
+	-H 'Authorization: Bearer eyJJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJzdWIiOiJTUklLQU5ULk5PT1JBTklAQlJPQURDT00uQ09NIiwiZHluZXhwIjp0VlLCJ0aWQiOjEwMjYsImp0aSI6ImFhZTc0ZDYyLTExMzMtNGI2Mi1hNWQ1LTlmYzdkZTAzMTIwYSJ9.1k0kCEQF1U55RGfZtc37EgIdTC8l8tIFFvScfjyzwDTohUOBqbe209iq43Zm1TeY93DOrlSS98gD0VrhARX84g' \
 	-H 'Content-Type: application/json' \
 	-d '{"query":"SELECT domain_name, agent_host,agent_process, agent_name, metric_path,  metric_attribute, ts, min_value, max_value, agg_value, value_count, frequency FROM metric_data WHERE ts >= '$START_TIME' AND ts <= '$END_TIME' AND agent_name like_regex '\'"$AGENT_NAME"\'' AND metric_path like_regex '\'"$METRIC_EXPR"\'' AND value_count > 0 limit 5"}'`
 
