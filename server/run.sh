@@ -1,0 +1,1 @@
+docker run -d --env  MYSQL_ROOT_PASSWORD=CAdemo123  --env MYSQL_DATABASE=jtixchange  --env MYSQL_USER=tcuser  --env MYSQL_PASSWORD=quality -v /root/UPS/mysql/server/data:/var/lib/mysql --name=mysql-grafana -p 3306:3306 srikns/tixchange-mysql8:latest
